@@ -44,7 +44,7 @@ Mi Primera Aplicacion con Shake
 3. Creando un modelo
 
    Editar el archivo ``models.py`` ::
-   
+
       from shakext.sqlalchemy import SQLAlchemy
 
       class Post(db.Model):
@@ -74,47 +74,49 @@ Mi Primera Aplicacion con Shake
 
 7. Creando el controlador
 
-   Editar el archivo ``controllers.py`` ::
+  Editar el archivo ``controllers.py`` ::
 
-        # -*- coding: utf-8 -*-
+      # -*- coding: utf-8 -*-
 
-        from shake import redirect, url_for, flash, NotFound
+      from shake import redirect, url_for, flash, NotFound
 
-        # from shakext.auth import protected
+      # from shakext.auth import protected
 
-        from . import settings
-        from .models import db
-        from .settings import render
-        
-        def index(request):
-        return render('index.html', **locals())
+      from . import settings
+      from .models import db
+      from .settings import render
+
+      def index(request):
+          return render('index.html', **locals())
 
 8. Servir los posts ::
 
-        # controllers.py
+    # controllers.py
 
-        def index(request):
-              posts = Post.query.all()
-              return render('index.html', **locals())
+    def index(request):
+        posts = Post.query.all()
+        return render('index.html', **locals())
 
 9. Mostrar los posts
    
-   Editar ``views/index.html`` ::
+   Editar ``views/index.html``
 
-        {% extends "base.html" %}
+   .. code-block:: django
+
+      {% extends "base.html" %}
         
-        {% block title %}Hello{% endblock %}
-        {% block content %}
-        <ul>
+      {% block title %}Hello{% endblock %}
+      {% block content %}
+      <ul>
         {% for post in posts %}
-        <li>
-        <h2>{{ post.title }}</h2>
-          <p>{{ post.body }}</p>
-          <p>{{ post.created }}</p>
-        </li>
+          <li>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.body }}</p>
+            <p>{{ post.created }}</p>
+          </li>
         {% endfor %}{# posts #}
-        </ul>
-        {% endblock %}
+      </ul>
+      {% endblock %}{# content #}
 
 10. Mostrar los post en la pagina de inicio
     Editar el archivo ``urls.py`` ::

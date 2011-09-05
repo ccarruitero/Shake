@@ -23,3 +23,5 @@ Instalacion
     $ python manage.py
 
 6. Abrir ``http://0.0.0.0:5000/`` en el navegador web 
+
+  .. image :: images/shake.png
