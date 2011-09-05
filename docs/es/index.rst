@@ -13,7 +13,7 @@ Contenidos:
 .. toctree::
     :maxdepth: 2
     
-    instalation 
+    install 
     blog 
 
 Indice y tabla de contenidos
